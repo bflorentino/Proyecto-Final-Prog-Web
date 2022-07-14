@@ -1,20 +1,28 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore } from 'firebase/firestore'
-import { getAuth } from 'firebase/auth'
+import React from 'react'
+import {BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import AuthRouter from './AuthRouter'
+import ItlamorRouter from './ItlamorRouter'
 
-const firebaseConfig = {
+const AppRouter = () => {
+  return (
+    <Router >
+      <div>
+        <Routes> 
 
-    // YOUR OWN FIREBASE CONFIGURATION
+          <Route 
+            path = '/auth/*' 
+            element = {<AuthRouter />}
+          />
 
-};
+          <Route  
+            path = '/itlamor/*' 
+            element = {<ItlamorRouter />} 
+          />
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore();
-
-export {
-    app, 
-    auth,
-    db
+        </Routes>
+      </div>
+    </Router>
+  )
 }
+
+export default AppRouter
