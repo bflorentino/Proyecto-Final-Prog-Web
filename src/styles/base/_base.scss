@@ -1,0 +1,67 @@
+* {
+    margin: 0px;
+    text-decoration: none;
+    padding: 0px;
+}
+
+body {
+    height:100vh;
+    width: 100vw;
+}
+
+// Margin Top
+.mt-1 {
+    margin-top: 5px;
+}
+.mt-2 {
+    margin-top: 10px;
+}
+.mt-3 {
+    margin-top: 15px;
+}
+.mt-4 {
+    margin-top: 20px;
+}
+.mt-5 {
+    margin-top: 25px;
+}
+
+// Margin Left
+.ml-1 {
+    margin-left: 5px;
+}
+.ml-2 {
+    margin-left: 10px
+}
+.ml-3 {
+    margin-left: 15px;
+}
+.ml-4 {
+    margin-left: 20px;
+}
+
+// Padding
+.p-1 {
+    padding: 5px;
+}
+.p-2 {
+    padding: 10px;
+}
+
+// Text Colors
+.text-gray {
+    color: #333333;
+}
+.text-red {
+    color: #C43434;
+}
+
+// display
+.none {
+    display: none
+}
+
+// pointer
+.pointer {
+    cursor: pointer;
+}

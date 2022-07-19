@@ -1,0 +1,20 @@
+.btn {
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 18px;
+    border: none;
+
+    &:focus{
+        outline: none;
+    }
+    color: white;
+}
+
+.btn-primary {
+    background-color: $secondary;
+    border-radius: 4px;
+    padding: 5px 10px;
+    &:hover {
+        background-color: darken($color: $secondary, $amount: 20);
+    }
+}

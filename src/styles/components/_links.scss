@@ -1,0 +1,9 @@
+
+.link {
+    font-size: 11px;
+    font-family: $sora;
+
+    &:hover{
+        text-decoration: underline;
+    }
+}

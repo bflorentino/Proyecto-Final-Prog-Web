@@ -1,0 +1,42 @@
+
+.authentication__main {
+    align-items: center;
+    background: url('../../../public/assets/img/lilypads.png');
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    margin: 0px;
+}
+
+.authentication__container {
+    background-color: $white;
+    border: solid $gray 1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.authentication__input {
+    border: solid $gray 1px;
+    outline: none;
+    font-size: 16px;
+    font-family: $openSans;
+    height: 35px;
+    width: 350px;   
+
+}
+
+.authentication__select {
+   font-weight: 300;
+   height: 45px;
+   width: 360px;   
+   color: #999999;
+}
+
+.authentication__title {
+    font-family: $sora;
+}
