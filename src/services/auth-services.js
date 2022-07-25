@@ -1,20 +1,25 @@
 import {signInWithEmailAndPassword,
         signOut, 
         createUserWithEmailAndPassword, 
-        updateProfile 
+        updateProfile,
       } from 'firebase/auth'
 
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, 
+         collection, 
+         getDocs, 
+         query, 
+         where } from 'firebase/firestore';
+
 import { auth, db } from '../firebase/config.firebase'
 
-export const registerUser = async (name, email, password) => {
+export const registerUser = async (userName, email, password) => {
 
    const {user} = await createUserWithEmailAndPassword(auth, email, password);
    
    await updateProfile(
       user, 
       {
-         displayName: name
+         displayName: userName
      })
 
    return (
@@ -39,7 +44,33 @@ export const addLeftDataFromUser = async (user) => {
          return true
       }
       catch(e){
-         console.log(e)
          return false
       }
    }
+
+export const signIn = async (email, password) => {
+
+   try{
+      const { user } = await signInWithEmailAndPassword(auth, email, password);
+      
+      return ({
+         uid: user.uid,
+         usuario: user.displayName
+      })
+   }
+   catch(e){
+      return false;
+   }
+}
+
+export const getLeftData = async (email) => {
+
+   const q = query(collection(db, "users"), where("email", "==", email));
+   const { docs } = await getDocs(q);
+ 
+   return docs[0].data()
+}
+
+export const logoutFirebase = async () => {
+   await signOut(auth)
+}

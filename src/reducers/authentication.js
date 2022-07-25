@@ -5,22 +5,23 @@ export const authentication = (state = {}, action) => {
     switch(action.type){
         
         case (types.LOGIN):
-            console.log(action)
             return {
                     uid: action.payload.uid,
-                    nombre: action.payload.nombre
+                    usuario: action.payload.usuario
             };
 
         case (types.SETLEFTDATA):
+            // Guardar en el localStorage los datos obtenidos del usuario una vez inicio sesión
+            window.localStorage.setItem("user Data", JSON.stringify(action.payload))
             return{
                 ...state,
                 carrera: action.payload.carrera,
                 apellido: action.payload.apellido,
                 email: action.payload.email,
-                usuario: action.payload.usuario
+                nombre: action.payload.nombre
             }
-
         case (types.LOGOUT):
+            window.localStorage.removeItem("user Data")
             return {}
 
         default:

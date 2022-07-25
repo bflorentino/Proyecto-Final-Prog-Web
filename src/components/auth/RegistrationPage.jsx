@@ -5,6 +5,7 @@ import { addLeftDataFromUser, registerUser } from '../../services/auth-services'
 import { login, setLeftData } from '../../actions/auth-actions'
 import { authContext } from '../../context/context'
 import { validateUserSignUpForm } from '../../validations/validateUserSignUp'
+import Swal from 'sweetalert2'
 
 const RegistrationPage = () => {
 
@@ -43,6 +44,14 @@ const RegistrationPage = () => {
               dispatch(setLeftData(formValues))
             }
             history('/itlamor/feed')
+        })
+      })
+      .catch(e => {
+        Swal.fire({
+          title: "Error al registrarse",
+          text:"Este correo electrónico ya existe",
+          icon: "error",
+          confirmButtonText: "Ok"
         })
       })  
     }
