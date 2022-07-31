@@ -1,6 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const NewPostPage = () => {
+
+  const [ image, setImage ] = useState(null);
+  const [ readedImage, setReadedImage ] = useState(null);
+
+  const imageHandler = (e) =>{
+    const reader = new FileReader();
+    reader.onload = () => {
+      reader.readyState === 2 && setImage(reader.result)
+    }
+    reader.readAsDataURL(e.target.files[0]);
+    setReadedImage(e.target.files[0])
+  }
 
   return (
     <section className='FormPost__cont' >
@@ -54,7 +66,7 @@ const NewPostPage = () => {
           <div className='FormPost__fieldInp'>
             <div>
               <input type="radio" name='visibility' id='priv' />
-              <label htmlFor="priv" className='FormPost__label'>Anónimo</label>
+              <label htmlFor="priv" className='FormPost__label'>Privado</label>
             </div>
             <div>
               <input type="radio" name='visibility' id='pub' />
@@ -70,8 +82,27 @@ const NewPostPage = () => {
           </div>
 
           <div className='FormPost__fieldInp'>
-              <textarea name='content' className='FormPost__textarea'  />
+              <textarea name='content' className='FormPost__textarea no-scrollbar' placeholder='Contenido de la declaracion' />
           </div>
+        </div>
+
+        {
+          image && <img src={image} alt="" className='normal-img' />
+        }
+
+        <div className='FormPost__submit'>
+          <label className='text-gray pointer FormPost__upload'>
+            <input 
+              type="file"
+              name='profPicture'
+              accept='image/*'
+              className=' none'
+              onChange={imageHandler}
+            />
+            <img src="../../assets/img/image_gallery.png" alt="" className='img-icon' />
+            Adjuntar imagen
+          </label>
+          <button className ='btn btn-primary'>Publicar</button>
         </div>
 
       </form>

@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     width: 100%;
+    overflow: auto;
 }
 
 .FormPost__form {
@@ -12,10 +13,13 @@
     flex-direction: column;
     width: 700px;
     margin-top: 60px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .FormPost__fieldCont {
     display: flex;
+    align-items: center;
     width: 70%;    
     margin-top: 20px;
 }
@@ -49,12 +53,29 @@
 }
 
 .FormPost__input {
-    width: 80%;
+    width: 100%;
     outline: none;
     height: 30px;
+    border-color: $gray;
 }
 
 .FormPost__textarea {
-    width: 80%;
+    border-color: $gray;
+    font-family: $archivo;
     height: 150px;
+    padding: 10px;
+    outline: none;
+    resize: none;
+    width: 100%;
+}
+
+.FormPost__submit{
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+}
+
+.FormPost__upload{
+    display: flex;
+    align-items: center;
 }

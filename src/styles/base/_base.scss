@@ -11,6 +11,27 @@ body {
     font-size: 12px;
 }
 
+body::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+body::-webkit-scrollbar:vertical {
+    width:7px;
+}
+
+body::-webkit-scrollbar-button:increment, body::-webkit-scrollbar-button {
+    display: none;
+} 
+
+body::-webkit-scrollbar-thumb {
+    background-color: #DEDEDE;
+    border-radius: 20px;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
 // Margin Top
 .mt-1 {
     margin-top: 5px;
@@ -82,4 +103,14 @@ body {
 // Width
 .w-full {
     width: 100%
+}
+
+// Images
+.img-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.normal-img {
+    width: 350px;
 }
