@@ -4,7 +4,7 @@ import { useForm } from '../../hooks/useForm'
 import { getLeftData, signIn } from '../../services/auth-services'
 import { login, setLeftData } from '../../actions/auth-actions'
 import { authContext } from '../../context/context'
-import { validateLogin } from '../../validations/validateUserSignUp'
+import { validateLogin } from '../../validations/validations'
 import Swal from 'sweetalert2'
 
 const LoginPage = () => {

@@ -22,3 +22,11 @@ export const validateLogin = (email, password) => {
 
     return true;
 }
+
+export const validatePostUpload = (toWhom, body) => {
+    
+    if(toWhom === "")return ["Debe seleccionar el destinatario", 0]
+    if(body === "") return ["Agregue el contenido de la declaración", 1]
+
+    return true
+}

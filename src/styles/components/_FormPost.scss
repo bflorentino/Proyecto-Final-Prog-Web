@@ -1,6 +1,7 @@
 .FormPost__cont{
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 100%;
     overflow: auto;
 }
@@ -13,8 +14,17 @@
     flex-direction: column;
     width: 700px;
     margin-top: 60px;
-    padding-top: 10px;
     padding-bottom: 10px;
+    height: 620px;
+    margin-bottom: 50px;
+}
+
+.FormPost__dataCont{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
 }
 
 .FormPost__fieldCont {
@@ -33,11 +43,12 @@
     font-family: $openSans;
     width: 70%;
     text-align: left;
-    padding-left: 15px;
+    padding-left: 25px;
 }
 
 .FormPost__fieldInp{
     display: flex;
+    flex-direction: column;
     padding-top: 10px;
     padding-bottom: 20px;
     width: 70%;
@@ -45,6 +56,7 @@
 
 .FormPost__fieldInp div{
     padding-left: 10px;
+    padding-top: 10px;
     display: flex;
 }
 
@@ -73,6 +85,7 @@
     display: flex;
     justify-content: space-between;
     width: 70%;
+    margin-top: 10px;
 }
 
 .FormPost__upload{

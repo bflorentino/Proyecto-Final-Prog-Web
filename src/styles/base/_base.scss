@@ -11,21 +11,21 @@ body {
     font-size: 12px;
 }
 
-body::-webkit-scrollbar {
+body::-webkit-scrollbar, .styled-scroll::-webkit-scrollbar {
     -webkit-appearance: none;
 }
 
-body::-webkit-scrollbar:vertical {
+body::-webkit-scrollbar:vertical, .styled-scroll::-webkit-scrollbar {
     width:7px;
 }
 
-body::-webkit-scrollbar-button:increment, body::-webkit-scrollbar-button {
+body::-webkit-scrollbar-button:increment, body::-webkit-scrollbar-button,
+.styled-scroll::-webkit-scrollbar-button:increment, .styled-scroll::-webkit-scrollbar-button {
     display: none;
 } 
 
-body::-webkit-scrollbar-thumb {
+body::-webkit-scrollbar-thumb, .styled-scroll::-webkit-scrollbar-thumb  {
     background-color: #DEDEDE;
-    border-radius: 20px;
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -110,7 +110,11 @@ body::-webkit-scrollbar-thumb {
     width: 30px;
     height: 30px;
 }
-
 .normal-img {
     width: 350px;
+}
+.profile-img{
+    width: 50px;
+    height: 50px;
+    border-radius: 9999px;
 }
