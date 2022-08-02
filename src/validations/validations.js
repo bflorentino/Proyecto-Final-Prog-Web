@@ -30,3 +30,11 @@ export const validatePostUpload = (toWhom, body) => {
 
     return true
 }
+
+export const validateOther = (name, lastName) => {
+    
+    if(name === "")return ["Agregue el nombre", 0]
+    if(lastName === "") return ["Agregue el apellido", 1]
+
+    return true
+}

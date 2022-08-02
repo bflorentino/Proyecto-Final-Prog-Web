@@ -1,33 +1,36 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { authContext, postContext } from '../../context/context';
+import { authContext } from '../../context/context';
 import { useForm } from '../../hooks/useForm';
 import { addImage, addNewPost, getAllUsers } from '../../services/post-services';
 import { validatePostUpload } from '../../validations/validations';
+import Other from './Other';
 
+// A FORM TO MAKE A LOVE POST
 const NewPostPage = () => {
 
   const [ image, setImage ] = useState(null);
   const [ readedImage, setReadedImage ] = useState(null);
   const [ users, setUsers ] = useState([])
-  const history = useNavigate()
-
+  const [ isOtherOpen, setIsOtherOpen ] = useState(false);
+  
   const [ error, setError ] = useState({
     responsibleInput: null,
     message: null
   });
-
+  
   const { message, responsibleInput} = error;
-
-  const [ formValues, handleInputChanges ] = useForm({
+  const {auth} = useContext(authContext)
+  const history = useNavigate()
+  
+  const [ formValues, handleInputChanges, setFormValues ] = useForm({
     privacy : "public",
     toWhom: "", 
     visibility : "public",
     body : ""
   })
-
-  const {auth} = useContext(authContext)
-
+  
+// GETTING USERS FROM FIREBASE TO BE DISPLAYED IN THE DROPDOWN
   useEffect(() => {
     getAllUsers()
       .then(data => {
@@ -35,6 +38,7 @@ const NewPostPage = () => {
     })
   }, [auth.email])
 
+// IMAGE HANDLER TO HANDLE AN IMAGE 
   const imageHandler = (e) =>{
     const reader = new FileReader();
     reader.onload = () => {
@@ -44,7 +48,19 @@ const NewPostPage = () => {
     setReadedImage(e.target.files[0])
   }
 
+// OPEN MODAL WINDOW WHEN USER PICK OTHER
+const handleOther = (e) => {
+
+  document.getElementById("portal").classList.toggle("modal__show-modal")
+  setIsOtherOpen(true)
+
+  e.preventDefault();
+}
+
+// SUBMITTING THE FORM TO ADD A NEW LOVE POST
   const postSubmit = (e) => {
+
+    console.log(formValues)
     
     e.preventDefault();
     const isValid = validatePostUpload(formValues.toWhom, formValues.body)
@@ -75,9 +91,16 @@ const NewPostPage = () => {
     }
   }
  
-  return (
-    <section className='FormPost__cont' >
-      
+  return (    
+    <section className='FormPost__cont'>
+
+     {isOtherOpen && 
+        <Other 
+          setIsOtherOpen={setIsOtherOpen} 
+          setFormValues={setFormValues}
+          formValues={formValues}
+        />
+    } 
       <form className='FormPost__form' onSubmit={postSubmit}>
 
         <div className='FormPost__dataCont styled-scroll'>     
@@ -127,7 +150,7 @@ const NewPostPage = () => {
               <h3 className='FormPost__h3'>Destinatario</h3>
             </div>
             <div className='FormPost__fieldInp'>
-              <select name="toWhom" onChange={handleInputChanges} className='FormPost__input'>
+              <select id='dest' name="toWhom" onChange={handleInputChanges} className='FormPost__input'>
                 <option value="" defaultValue>Seleccionar</option>
                 {
                   users.map((user, i) => 
@@ -137,6 +160,12 @@ const NewPostPage = () => {
                   ))
                 }
               </select>
+              <button 
+                className='btn pointer text-left mt-1 FormPost__otherBtn'
+                onClick={handleOther}  
+              >
+                Otro
+              </button>
               {
               (message && responsibleInput === 0) && 
               (
@@ -234,12 +263,11 @@ const NewPostPage = () => {
               </button>
             ) 
           }
-
           <button className ='btn btn-primary'>Publicar</button>
         </div>
       </form>
     </section>
+
   )
 }
-
 export default NewPostPage

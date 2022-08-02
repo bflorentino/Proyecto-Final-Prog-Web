@@ -15,7 +15,7 @@
     width: 700px;
     margin-top: 60px;
     padding-bottom: 10px;
-    height: 620px;
+    height: 640px;
     margin-bottom: 50px;
 }
 
@@ -68,7 +68,7 @@
     width: 100%;
     outline: none;
     height: 30px;
-    border-color: $gray;
+    border: 1px solid $gray
 }
 
 .FormPost__textarea {
@@ -91,4 +91,9 @@
 .FormPost__upload{
     display: flex;
     align-items: center;
+}
+
+.FormPost__otherBtn {
+    color: #0081A8;
+    width: 30px;
 }
