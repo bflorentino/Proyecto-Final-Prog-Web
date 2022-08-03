@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { authContext } from '../../context/context';
 import { useForm } from '../../hooks/useForm';
-import { addImage, addNewPost, getAllUsers } from '../../services/post-services';
+import { addImage, addNewPost, getAll } from '../../services/post-services';
 import { validatePostUpload } from '../../validations/validations';
 import Other from './Other';
 
@@ -32,7 +32,7 @@ const NewPostPage = () => {
   
 // GETTING USERS FROM FIREBASE TO BE DISPLAYED IN THE DROPDOWN
   useEffect(() => {
-    getAllUsers()
+    getAll("users")
       .then(data => {
         setUsers(data.filter(user => user.email !== auth.email))
     })

@@ -8,21 +8,30 @@ import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { v4 } from 'uuid';
 import { db, storage } from '../firebase/config.firebase'
 
-export const getAllUsers = async () => {
+export const getAll = async (collectionName) => {
 
-    const { docs } = await getDocs(collection(db, "users"))
-    const users = docs.map(doc => doc.data())
+    const { docs } = await getDocs(collection(db, collectionName))
+    const snapshot = docs.map(doc => doc.data())
 
-    return users;
+    return snapshot;
+}
+
+export const getWithEqualQuery = async (collect, field, value) => {
+
+    const q = query(collection(db, collect), where(field, "==", value));
+    const { docs } = await getDocs(q);
+    const snapshot = docs.map(doc => doc.data())
+  
+    return snapshot
 }
 
 export const addNewPost = async (post) => {
   
-  try{
+    try{
         await addDoc(collection(db, "posts"), post)
         return true
      }
-     catch(e){
+    catch(e){
         return false
      }
 }

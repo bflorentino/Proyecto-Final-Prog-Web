@@ -31,7 +31,11 @@ const AppRouter = () => {
     <h1>Cargando</h1>
       :(<Router >
         <div>
-          <Routes> 
+          <Routes>
+            <Route 
+              path = '/' 
+              element = {<Navigate to="/itlamor/feed" />}
+            />
             <Route 
               path = '/auth/*' 
               element = {!isAuthenticated ? <AuthRouter /> : <Navigate to="/itlamor/feed" />}
