@@ -1,41 +1,31 @@
-* {
+*{
     margin: 0px;
     list-style: none;
     padding: 0px;
     text-decoration: none;
 }
-
 body {
     background-color: $primary;
     font-family: $sora;
     font-size: 12px;
 }
-
 body::-webkit-scrollbar, .styled-scroll::-webkit-scrollbar {
     -webkit-appearance: none;
 }
-
 body::-webkit-scrollbar:vertical, .styled-scroll::-webkit-scrollbar {
     width:7px;
 }
-
 body::-webkit-scrollbar-button:increment, body::-webkit-scrollbar-button,
 .styled-scroll::-webkit-scrollbar-button:increment, .styled-scroll::-webkit-scrollbar-button {
     display: none;
 } 
-
 body::-webkit-scrollbar-thumb {
     background-color: $gray;
     border-radius: 5px;
 }
-
 .styled-scroll::-webkit-scrollbar-thumb  {
     background-color: #DEDEDE;
     border-radius: 5px;
-}
-
-.no-scrollbar::-webkit-scrollbar {
-    display: none;
 }
 
 // Margin Top
@@ -131,4 +121,9 @@ body::-webkit-scrollbar-thumb {
     width: 35px;
     height: 35px;
     border-radius: 9999px;
+}
+
+// text weight
+.bold {
+    font-weight: 600;
 }

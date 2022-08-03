@@ -116,7 +116,7 @@ const handleOther = (e) => {
 
           <div className='FormPost__fieldCont'>
             <div className='FormPost__fieldTitle'>
-              <h3 className='FormPost__h3'>Identidad en la declaración</h3> 
+              <h3 className='FormPost__h3'>Identidad</h3> 
             </div>
             <div className='FormPost__fieldInp'>
               <div>
@@ -211,7 +211,7 @@ const handleOther = (e) => {
           <div className='FormPost__fieldCont'>
 
             <div className='FormPost__fieldTitle'>
-              <h3 className='FormPost__h3'>Contenido de la declaración</h3> 
+              <h3 className='FormPost__h3'>Contenido</h3> 
             </div>
 
             <div className='FormPost__fieldInp'>

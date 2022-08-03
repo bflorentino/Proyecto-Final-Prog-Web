@@ -40,7 +40,7 @@ const NavBar = () => {
                     <Link to='/itlamor/post' className='nav__link'>Declaración</Link>
                   </li>
                   <li className='nav__item'>
-                    <button onClick={handleLogout} className='nav__link btn'>Cerrar Sesión</button>
+                    <button onClick={handleLogout} className='nav__link btn'>Salir</button>
                   </li>
                 </>
               )
@@ -48,7 +48,7 @@ const NavBar = () => {
               (
                 <>
                   <li className='nav__item'>
-                    <Link to='/auth/login' className='nav__link'>Iniciar Sesión</Link>
+                    <Link to='/auth/login' className='nav__link'>Login</Link>
                   </li>
                   <li className='nav__item'>
                     <Link to='/auth/sign-up' className='nav__link'>Registrarse</Link>                 

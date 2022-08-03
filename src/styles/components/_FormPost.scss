@@ -5,20 +5,18 @@
     width: 100%;
     overflow: auto;
 }
-
 .FormPost__form {
     align-items: center;
     background-color: $white;
     border: 1px solid $gray;
     display: flex;
     flex-direction: column;
-    width: 700px;
+    width: 55%;
     margin-top: 60px;
     padding-bottom: 10px;
     height: 640px;
     margin-bottom: 50px;
 }
-
 .FormPost__dataCont{
     width: 100%;
     display: flex;
@@ -26,26 +24,21 @@
     align-items: center;
     overflow: auto;
 }
-
 .FormPost__fieldCont {
     display: flex;
     align-items: center;
     width: 70%;    
     margin-top: 20px;
 }
-
 .FormPost__fieldTitle {
     display: flex;
     width: 30%;
 }
-
 .FormPost__h3 {
     font-family: $openSans;
     width: 70%;
     text-align: left;
-    padding-left: 25px;
 }
-
 .FormPost__fieldInp{
     display: flex;
     flex-direction: column;
@@ -53,24 +46,20 @@
     padding-bottom: 20px;
     width: 70%;
 }
-
 .FormPost__fieldInp div{
     padding-left: 10px;
     padding-top: 10px;
     display: flex;
 }
-
 .FormPost__label {
     padding-left: 10px;
 }
-
 .FormPost__input {
     width: 100%;
     outline: none;
     height: 30px;
     border: 1px solid $gray
 }
-
 .FormPost__textarea {
     border-color: $gray;
     font-family: $archivo;
@@ -78,22 +67,44 @@
     padding: 10px;
     outline: none;
     resize: none;
-    width: 100%;
+    width: 96%;
 }
-
 .FormPost__submit{
     display: flex;
     justify-content: space-between;
     width: 70%;
     margin-top: 10px;
 }
-
 .FormPost__upload{
     display: flex;
     align-items: center;
 }
-
 .FormPost__otherBtn {
     color: #0081A8;
     width: 30px;
+}
+
+// MAKING RESPONSIVE
+@media only screen and (max-width:900px){
+    .FormPost__form{
+        width: 90%;
+    }
+    .FormPost__fieldCont {
+        width: 90%;    
+    }
+    .FormPost__fieldInp{
+        width: 62%;
+    }
+}
+
+@media only screen and (min-width:700px){
+    .FormPost__h3 {
+        padding-left: 60px;
+    }
+}
+
+@media only screen and (min-width:900px){
+    .FormPost__h3 {
+        padding-left: 25px;
+    }
 }
