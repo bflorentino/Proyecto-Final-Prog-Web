@@ -7,6 +7,7 @@ import { addDoc,
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { v4 } from 'uuid';
 import { db, storage } from '../firebase/config.firebase'
+import { getLeftData } from './auth-services';
 
 export const getAll = async (collectionName) => {
 
@@ -25,6 +26,19 @@ export const getWithEqualQuery = async (collect, field, value) => {
     return snapshot
 }
 
+export const getUsersFromPosts = async (posts) => {
+
+    // POR CADA POSTS DE LA LISTA DE POSTS OBTENEMOS LA INFORMACION DEL USUARIO QUE PUBLICÓ DICHO POST.
+    for (const post of posts) {
+        
+        const data = await getLeftData(post.emailFrom)
+        post.nameOrigin = data.nombre
+        post.lastNameOrigin = data.apellido
+        post.profilePicOrigin = data.photoURL
+    }
+    return posts
+}
+
 export const addNewPost = async (post) => {
   
     try{
@@ -36,12 +50,12 @@ export const addNewPost = async (post) => {
      }
 }
 
-export const addImage = async (image) => {
+export const addImage = async (image, path) => {
 
     let url = null;
 
     if(image !== null){
-        const imagesRef = ref(storage, `post-images/${v4()}`)
+        const imagesRef = ref(storage, `${path ? path : 'post-images'}/${v4()}`)
         await uploadBytes(imagesRef, image)
         url = await getDownloadURL(imagesRef)
     }

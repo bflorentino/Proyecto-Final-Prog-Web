@@ -7,7 +7,8 @@ export const authentication = (state = {}, action) => {
         case (types.LOGIN):
             return {
                     uid: action.payload.uid,
-                    usuario: action.payload.usuario
+                    usuario: action.payload.usuario,
+                    photoURL: action.payload.photoURL
             };
 
         case (types.SETLEFTDATA):

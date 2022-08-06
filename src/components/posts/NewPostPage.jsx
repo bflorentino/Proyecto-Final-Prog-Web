@@ -59,8 +59,6 @@ const handleOther = (e) => {
 
 // SUBMITTING THE FORM TO ADD A NEW LOVE POST
   const postSubmit = (e) => {
-
-    console.log(formValues)
     
     e.preventDefault();
     const isValid = validatePostUpload(formValues.toWhom, formValues.body)
@@ -75,7 +73,8 @@ const handleOther = (e) => {
       const postToUpload = {
         ...formValues,
         postFrom: `${auth.nombre} ${auth.apellido}`,
-        emailFrom: auth.email
+        emailFrom: auth.email,
+        date: new Date().toLocaleDateString()
       }
   
       addImage(readedImage)
@@ -107,7 +106,11 @@ const handleOther = (e) => {
 
           <div className='FormPost__fieldCont'>
             <div className='FormPost__fieldTitle'>
-              <img src='../../assets/img/no-user-image.jpg' className='profile-img' alt='' /> 
+              <img 
+                src={auth.photoURL? auth.photoURL : '../../assets/img/no-user-image.jpg'} 
+                className='profile-img' 
+                alt='' 
+              /> 
             </div>
             <div className='FormPost__fieldInp'>
               <h1>{auth.nombre} {auth.apellido}</h1>

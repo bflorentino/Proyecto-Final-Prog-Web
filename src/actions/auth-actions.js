@@ -14,6 +14,7 @@ export const setLeftData = (userData) => ({
         apellido: userData.apellido,
         carrera: userData.carrera,
         email: userData.email,
+        photoURL: userData.photoURL
     }
 })
 

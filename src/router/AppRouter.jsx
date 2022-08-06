@@ -16,7 +16,7 @@ const AppRouter = () => {
   useEffect(() => {
     onAuthStateChanged(auth, (userAuth) => {
       if(userAuth){
-        dispatch(login({uid:userAuth.uid, usuario: userAuth.displayName}))
+        dispatch(login({uid:userAuth.uid, usuario: userAuth.displayName, photoURL: userAuth.photoURL}))
         setIsAuntheticated(true)
         dispatch(setLeftData(JSON.parse(window.localStorage.getItem("user Data"))))
       }else{

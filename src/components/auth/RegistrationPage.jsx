@@ -6,6 +6,7 @@ import { login, setLeftData } from '../../actions/auth-actions'
 import { authContext } from '../../context/context'
 import { validateUserSignUpForm } from '../../validations/validations'
 import Swal from 'sweetalert2'
+import { addImage } from '../../services/post-services'
 
 const RegistrationPage = () => {
 
@@ -17,16 +18,29 @@ const RegistrationPage = () => {
   const history = useNavigate();
   const {dispatch} = useContext(authContext);
   const { message, responsibleInput} = error;
+  const [ image, setImage ] = useState(null);
+  const [ readedImage, setReadedImage ] = useState(null);
 
-  const [ formValues, handleInputChanges ] = useForm({usuario: "",
-                                                     nombre: "",
-                                                     apellido: "",
-                                                     password: "",
-                                                     password2: "",
-                                                     carrera: "",
-                                                     email: ""
-                                                   })
+  const [ formValues, handleInputChanges ] = useForm({
+    usuario: "brian", 
+    nombre: "bryan", 
+    apellido: "santa", 
+    password: "12345678", 
+    password2: "12345678", 
+    carrera: "", 
+    email: ""
+  })
 
+  // IMAGE HANDLER TO HANDLE AN IMAGE 
+const imageHandler = (e) =>{
+  const reader = new FileReader();
+  reader.onload = () => {
+    reader.readyState === 2 && setImage(reader.result)
+  }
+  reader.readAsDataURL(e.target.files[0]);
+  setReadedImage(e.target.files[0])
+}
+  
   const handleOnSubmit = (e) => {
     e.preventDefault()
 
@@ -35,25 +49,36 @@ const RegistrationPage = () => {
     
     if(esValido === true){
       setError({responsibleInput: null, message: null})
-      registerUser( formValues.nombre, formValues.email, formValues.password)
-      .then(data => {
-        dispatch(login(data))
-        addLeftDataFromUser(formValues)
+      
+      // Agregar foto de perfil del usuario al storage
+      addImage(readedImage, 'profile-pics')
+      .then(url => {
+        // Registrar al usuario
+        registerUser( formValues.nombre, formValues.email, formValues.password, url)
+        .then(data => {
+          // autenticar al usuario una vez se registro su informacion
+          dispatch(login(data))
+          // Añadir toda la información restante del usuario a la base de datos
+          addLeftDataFromUser({...formValues, url})
           .then(res => {
-            if(res){
-              dispatch(setLeftData(formValues))
-            }
-            history('/itlamor/feed')
+              
+              if(res){
+                // Agregar la data recibida al context de la autenticacion y al localStorage
+                dispatch(setLeftData({...formValues, photoURL: url}))
+              }
+
+              history('/itlamor/feed')
+          })
         })
+        .catch(e => {
+          Swal.fire({
+            title: "Error al registrarse",
+            text:"Este correo electrónico ya existe",
+            icon: "error",
+            confirmButtonText: "Ok"
+          })
+        })  
       })
-      .catch(e => {
-        Swal.fire({
-          title: "Error al registrarse",
-          text:"Este correo electrónico ya existe",
-          icon: "error",
-          confirmButtonText: "Ok"
-        })
-      })  
     }
     else{
       setError({
@@ -65,7 +90,7 @@ const RegistrationPage = () => {
 
   return (
     <>
-      <h1 className='authentication__title text-gray'>Registrate</h1>
+      <h1 className='authentication__title text-gray mt-3'>Registrate</h1>
       <p className='text-gray'>Es hora de declarar tu amor, itlasiano/a</p>
 
       <form onSubmit={handleOnSubmit} className='authentication__container mt-2'>
@@ -239,15 +264,20 @@ const RegistrationPage = () => {
           )
         }
 
-        {/* <label className='text-gray mt-5 pointer'>
+        <label className='text-gray mt-5 pointer'>
           <input 
             type="file"
             name='profPicture'
             accept='image/*'
             className=' none'
+            onChange={imageHandler}
           />
-          Selecciona una foto (opcional)
-        </label> */}
+          Selecciona tu foto de perfil (opcional)
+        </label>
+
+        <div className='picture'>
+          <img src={image} alt="" className='profile-img authentication__pic mt-2' />
+        </div>
 
         <button type="submit" className='btn btn-primary mt-4'>
           Registrate ya

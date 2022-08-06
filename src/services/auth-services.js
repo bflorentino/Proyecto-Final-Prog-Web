@@ -12,20 +12,22 @@ import { addDoc,
 
 import { auth, db } from '../firebase/config.firebase'
 
-export const registerUser = async (userName, email, password) => {
+export const registerUser = async (userName, email, password, picUrl) => {
 
    const {user} = await createUserWithEmailAndPassword(auth, email, password);
    
    await updateProfile(
       user, 
       {
-         displayName: userName
+         displayName: userName,
+         photoURL: picUrl
      })
 
    return (
     {
        uid: user.uid,
        nombre: user.displayName,
+       photoURL: user.photoURL
     }
    )
 }
@@ -36,7 +38,8 @@ export const addLeftDataFromUser = async (user) => {
          nombre: user.nombre,
          apellido: user.apellido,
          carrera: user.carrera,
-         email: user.email
+         email: user.email,
+         photoURL: user.url
    }
    
    try{
@@ -55,7 +58,8 @@ export const signIn = async (email, password) => {
       
       return ({
          uid: user.uid,
-         usuario: user.displayName
+         usuario: user.displayName,
+         photoURL: user.photoURL
       })
    }
    catch(e){

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { authContext } from '../../context/context'
-import { getAll, getWithEqualQuery } from '../../services/post-services'
+import { getAll, getUsersFromPosts, getWithEqualQuery } from '../../services/post-services'
 import Post from '../posts/Post'
 
 const FeedPage = () => {
@@ -15,17 +15,22 @@ const FeedPage = () => {
 
     if(auth.uid){
       getAll("posts")
-        .then(data => {
-          setPosts(data)
-        })
-    }
-    else{
-      getWithEqualQuery("posts", "privacy", "public")
       .then(data => {
-        setPosts(data)
+          getUsersFromPosts(data)
+            .then(dPosts => {
+              setPosts(dPosts)
+            })
+        })
+      }
+      else{
+        getWithEqualQuery("posts", "privacy", "public")
+        .then(data => {
+          getUsersFromPosts(data).then(dPosts => {
+            setPosts(dPosts)
+          })
       })
     }
-  }, [auth.uid])
+  }, [auth.uid,])
 
   return (
     <>
