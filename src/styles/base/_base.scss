@@ -23,6 +23,12 @@ body::-webkit-scrollbar-thumb {
     background-color: $gray;
     border-radius: 5px;
 }
+
+#root{
+    display: flex;
+    flex-direction: column;
+}
+
 .styled-scroll::-webkit-scrollbar-thumb  {
     background-color: #DEDEDE;
     border-radius: 5px;

@@ -42,6 +42,8 @@ const NavBar = () => {
                   <li className='nav__item'>
                     <button onClick={handleLogout} className='nav__link btn'>Salir</button>
                   </li>
+                  <li className='nav__item'>
+                    <img src={auth.photoURL} className='nav__link profile-img' alt='' /> </li>
                 </>
               )
               :
@@ -53,6 +55,7 @@ const NavBar = () => {
                   <li className='nav__item'>
                     <Link to='/auth/sign-up' className='nav__link'>Registrarse</Link>                 
                   </li>
+                 
                 </>
               )
           }

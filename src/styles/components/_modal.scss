@@ -20,6 +20,7 @@
 .modal__content {
     justify-content: center;
     align-items: center;
+    padding-bottom: 25px;
     display: flex;
     flex-direction: column;
     background-color: $white;
@@ -45,4 +46,17 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
+}
+
+// MAKING RESPONSIVE
+
+@media only screen and (max-width:800px){
+    .modal__content{
+        width: 70%;
+    }
+}
+@media only screen and (max-width:550px){
+    .modal__content{
+        width: 80%;
+    }
 }

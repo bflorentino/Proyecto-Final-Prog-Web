@@ -1,12 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { authContext } from '../../context/context'
+import { authContext, profileContext } from '../../context/context'
 import { getAll, getUsersFromPosts, getWithEqualQuery } from '../../services/post-services'
 import Post from '../posts/Post'
+import ProfileWindow from '../profile/ProfileWindow'
 
 const FeedPage = () => {
 
   const [ posts, setPosts ] = useState([])
   const {auth} = useContext(authContext)
+  const {profileInfo} = useContext(profileContext)
 
   useEffect(() => {
 
@@ -35,9 +37,15 @@ const FeedPage = () => {
   return (
     <>
       <main className='sect__cont'>
+      {profileInfo.open && 
+          <ProfileWindow />
+      }
        {
         posts.map(post => (
-          <Post key={post.image} post={post} />
+          <Post 
+            key={post.image} 
+            post={post} 
+          />
         ))
        }
       </main>

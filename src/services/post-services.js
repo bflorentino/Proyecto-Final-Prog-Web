@@ -35,6 +35,7 @@ export const getUsersFromPosts = async (posts) => {
         post.nameOrigin = data.nombre
         post.lastNameOrigin = data.apellido
         post.profilePicOrigin = data.photoURL
+        post.careerOrigin = data.carrera
     }
     return posts
 }

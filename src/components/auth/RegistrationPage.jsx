@@ -22,11 +22,11 @@ const RegistrationPage = () => {
   const [ readedImage, setReadedImage ] = useState(null);
 
   const [ formValues, handleInputChanges ] = useForm({
-    usuario: "brian", 
-    nombre: "bryan", 
-    apellido: "santa", 
-    password: "12345678", 
-    password2: "12345678", 
+    usuario: "", 
+    nombre: "", 
+    apellido: "", 
+    password: "", 
+    password2: "", 
     carrera: "", 
     email: ""
   })

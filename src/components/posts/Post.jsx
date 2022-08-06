@@ -1,10 +1,21 @@
-import React from 'react'
+import React, { useContext} from 'react'
+import { openProfile } from '../../actions/profile-actions';
+import { profileContext } from '../../context/context'
 
 const Post = ({post}) => {
-  
+
+  const {dispatchProfile} = useContext(profileContext);
+
+  // OPEN MODAL WINDOW WHEN USER PICK OTHER
+  const handleProfileWindow = (e) => {
+    document.getElementById("portal").classList.toggle("modal__show-modal")
+    dispatchProfile(openProfile(post))
+  }
+
   return (
-    <>
+    <> 
         <div className='post__container'>
+
           <div className='post__header mt-2'>
           {post.privacy === "public" 
             ?
@@ -15,7 +26,11 @@ const Post = ({post}) => {
                  alt="" 
                  className='profile-img' 
               />
-               <p className='ml-2 bold'>{post.nameOrigin} {post.lastNameOrigin}</p> 
+               <p 
+                className='ml-2 bold pointer' 
+                onClick={handleProfileWindow}
+               >
+                  {post.nameOrigin} {post.lastNameOrigin}</p> 
               </div>  
             </> 
                : 

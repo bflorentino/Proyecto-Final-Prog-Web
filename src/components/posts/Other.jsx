@@ -58,6 +58,7 @@ const Other = ({setFormValues, formValues,  setIsOtherOpen}) => {
             <button className='btn modal__close pointer' onClick={closeModal}>
                     x
             </button>
+            <h2 className='text-center'>Otra persona</h2>
                 <form action="" className='modal__data'>
                     <input 
                         type="text" 

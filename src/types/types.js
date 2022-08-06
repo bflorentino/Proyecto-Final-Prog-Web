@@ -4,5 +4,7 @@ export const types =  {
     LOGOUT: 'authentication-logout',
     SETLEFTDATA: 'authentication-leftData',
     ADDPOST: 'posts-addpost',
-    GETPOST: 'posts-getpost'
+    GETPOST: 'posts-getpost',
+    OPENPROFILE: 'profile-open',
+    CLOSEPROFILE: 'profile-close'
 }

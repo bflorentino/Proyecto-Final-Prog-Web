@@ -1,13 +1,15 @@
 import React, { useReducer } from 'react'
-import { authContext, postContext } from './context/context';
+import { authContext, postContext, profileContext } from './context/context';
 import { authentication } from './reducers/authentication';
 import { posts } from './reducers/posts';
+import { profile } from './reducers/profile';
 import AppRouter from './router/AppRouter';
 
 const ItlamorApp = () => {
 
   const [ auth, dispatch ] = useReducer(authentication, {});
   const [ post, dispatchPosts ] = useReducer(posts, []);
+  const [ profileInfo, dispatchProfile ] = useReducer(profile, {open: false});
 
   const authValues = {
     auth,
@@ -19,13 +21,20 @@ const ItlamorApp = () => {
     dispatchPosts
   }
   
+  const profileValues = {
+    profileInfo,
+    dispatchProfile
+  }
+  
 
   return (
     <>
       <authContext.Provider value={authValues}>
       <postContext.Provider value={postsValues}>
+      <profileContext.Provider value={profileValues}>
         <AppRouter />
-      </postContext.Provider>   
+      </profileContext.Provider>   
+      </postContext.Provider>
       </authContext.Provider>   
     </>
   )
