@@ -60,7 +60,9 @@ const handleOther = (e) => {
 // SUBMITTING THE FORM TO ADD A NEW LOVE POST
   const postSubmit = (e) => {
     
-    e.preventDefault();
+    e.preventDefault()
+
+    let other = false
     const isValid = validatePostUpload(formValues.toWhom, formValues.body)
 
     if(isValid === true){
@@ -70,11 +72,19 @@ const handleOther = (e) => {
         responsibleInput:null
       })
 
+      console.log(formValues.toWhom.split(" ").length)
+      console.log(formValues.toWhom.split(" ").length)
+
+      if(formValues.toWhom.split(" ").length > 1){
+          other = true;
+      }  
+
       const postToUpload = {
         ...formValues,
         postFrom: `${auth.nombre} ${auth.apellido}`,
         emailFrom: auth.email,
-        date: new Date().toLocaleDateString()
+        date: new Date().toLocaleDateString(),
+        other
       }
   
       addImage(readedImage)
@@ -157,7 +167,7 @@ const handleOther = (e) => {
                 <option value="" defaultValue>Seleccionar</option>
                 {
                   users.map((user, i) => 
-                  ( <option key={i} value= {`${user.nombre} ${user.apellido}`} >
+                  ( <option key={i} value= {`${user.email}`} >
                       {user.nombre} {user.apellido}  
                     </option>
                   ))

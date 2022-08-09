@@ -7,9 +7,9 @@ const Post = ({post}) => {
   const {dispatchProfile} = useContext(profileContext);
 
   // OPEN MODAL WINDOW WHEN USER PICK OTHER
-  const handleProfileWindow = (e) => {
+  const handleProfileWindow = (toUser) => {
     document.getElementById("portal").classList.toggle("modal__show-modal")
-    dispatchProfile(openProfile(post))
+    dispatchProfile(openProfile(post, toUser))
   }
 
   return (
@@ -28,7 +28,7 @@ const Post = ({post}) => {
               />
                <p 
                 className='ml-2 bold pointer' 
-                onClick={handleProfileWindow}
+                onClick={() => handleProfileWindow("from")}
                >
                   {post.nameOrigin} {post.lastNameOrigin}</p> 
               </div>  
@@ -38,8 +38,16 @@ const Post = ({post}) => {
               }
               <p className='text-gray'>{post.date}</p> 
           </div>
-
-          <p className='ml-3 mt-2'>Para: {post.toWhom}</p>
+          
+          {
+            !post.other
+            ? 
+              <p className='ml-3 mt-2 bold pointer' onClick={() =>handleProfileWindow("to")}>
+                    {post.nameTo} {post.lastNameTo}
+              </p> 
+            : 
+              <p className='ml-3 mt-2'>Para: {post.toWhom}</p>
+            }
 
           {
             post.image !== null && 

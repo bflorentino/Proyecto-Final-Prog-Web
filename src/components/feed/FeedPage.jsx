@@ -41,9 +41,9 @@ const FeedPage = () => {
           <ProfileWindow />
       }
        {
-        posts.map(post => (
+        posts.map((post, index) => (
           <Post 
-            key={post.image} 
+            key= {index} 
             post={post} 
           />
         ))

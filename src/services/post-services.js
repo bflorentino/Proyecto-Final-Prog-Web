@@ -28,14 +28,25 @@ export const getWithEqualQuery = async (collect, field, value) => {
 
 export const getUsersFromPosts = async (posts) => {
 
-    // POR CADA POSTS DE LA LISTA DE POSTS OBTENEMOS LA INFORMACION DEL USUARIO QUE PUBLICÓ DICHO POST.
+    // POR CADA POST DE LA LISTA OBTENEMOS LA INFORMACION DE LOS USUARIOS INVOLUCRADOS EN EL POST.
     for (const post of posts) {
         
+        // Información del usuario que publica el post
         const data = await getLeftData(post.emailFrom)
         post.nameOrigin = data.nombre
         post.lastNameOrigin = data.apellido
         post.profilePicOrigin = data.photoURL
         post.careerOrigin = data.carrera
+
+        // Información del usuario destinatario del post (siempre y cuando no se haya elegido por la opcion de otros en el dropdown)
+        if(!post.other){
+            console.log(post.toWhom)
+            const data = await getLeftData(post.toWhom)
+            post.nameTo = data.nombre
+            post.lastNameTo = data.apellido
+            post.profilePicTo = data.photoURL
+            post.careerTo = data.carrera
+        }
     }
     return posts
 }
