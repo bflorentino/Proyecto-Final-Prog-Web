@@ -72,9 +72,6 @@ const handleOther = (e) => {
         responsibleInput:null
       })
 
-      console.log(formValues.toWhom.split(" ").length)
-      console.log(formValues.toWhom.split(" ").length)
-
       if(formValues.toWhom.split(" ").length > 1){
           other = true;
       }  

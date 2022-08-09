@@ -35,6 +35,7 @@ const LoginPage = () => {
           history('/itlamor/feed')
           getLeftData(formValues.email)
           .then(res => {
+              
               dispatch(setLeftData(res))
           })
         }else{

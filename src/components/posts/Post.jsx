@@ -43,7 +43,7 @@ const Post = ({post}) => {
             !post.other
             ? 
               <p className='ml-3 mt-2 bold pointer' onClick={() =>handleProfileWindow("to")}>
-                    {post.nameTo} {post.lastNameTo}
+                   Para: {post.nameTo} {post.lastNameTo}
               </p> 
             : 
               <p className='ml-3 mt-2'>Para: {post.toWhom}</p>

@@ -24,13 +24,13 @@ const ProfileWindow = () => {
             <h2 className='text-center'>Usuario</h2>
             <div className='profileWindow__data'>
                 <img 
-                    src={profileInfo.profilePicOrigin ? profileInfo.profilePicOrigin : '../../assets/img/no-user-image.jpg'} 
+                    src={profileInfo.photo ? profileInfo.photo : '../../assets/img/no-user-image.jpg'} 
                     alt="" 
                     className='profile-img profileWindow__img' 
                     />
                     <div className='ml-3'>
-                        <h3>{profileInfo.nameOrigin} {profileInfo.lastNameOrigin}</h3>
-                        <p className='mt-1'>{profileInfo.careerOrigin}</p>
+                        <h3>{profileInfo.name} {profileInfo.lastName}</h3>
+                        <p className='mt-1'>{profileInfo.career}</p>
                     </div>
             </div>
         </div>
