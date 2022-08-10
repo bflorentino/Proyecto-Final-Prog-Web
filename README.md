@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+# Documentación de proyecto de programación Web: itlamor
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Proyecto seleccionado:
 
-## Available Scripts
+Mi proyecto seleccionado fue el itla crush
 
-In the project directory, you can run:
+## Datos personales
 
-### `npm start`
+- Nombre: Bryan Xavier Florentino Montero
+- Matrícula: 2020-10674
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Información sobre el proyecto
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+El nombre dado a esta aplicación creada es itlamor. La idea de este proyecto es la creación de un espacio social en el cual los itlasianos puedan unir sus corazones haciendo declaraciones de amor.
 
-### `npm test`
+### Dicho proyecto ofrece las siguientes características (requeridas por el proyect) :
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- La funcionalidad de crear una cuenta de usuario
+- La funcionalidad de iniciar sesión
+- La posibilidad de leer declaraciones de amor en la sección principal.
+- La posibilidad de crear posts de declaración (Siempre y cuando dicha persona esté logeada)
+- Los posts de declaración se pueden hacer de forma anónima o pública
+- Los posts de declaración se pueden crear con un nivel de visualización público o privado. Si el nivel de visualización del post es público, entonces este post será visualizado tanto por usuarios logeados como para los que no lo estén; si dicho post es privado, solo lo podrán ver quienes esten logeados.
 
-### `npm run build`
+### Además ofrece otras características adicionales que le he agregado:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Al hacer una declaración se pueden subir una imagen de la persona destinatario (opcional)
+- Se pueden filtrar posts en la sección principal, es decir, un usuario (siempre que este logeado) podrá filtrar los posts por los que ha creado o por los posts en los que el usuario es el destinatario
+- Si la identidad de un usuario que hizo un post es pública, al hacer click sobre el usuario se podrá visuzalizar información sobre dicho usuario.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Capturas de pantalla del proyecto
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Sección login y registro de usuario
 
-### `npm run eject`
+![Registro](public/assets/img/Para%20Proyecto/CrearUsuario.jpg)
+![Login](public/assets/img/Para%20Proyecto/InicioSesion.jpg)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Sección de creación de posts
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![CrearPost](public/assets/img/Para%20Proyecto/CrearPost.jpg)
+![CrearPostLleno](public/assets/img/Para%20Proyecto/CrearPostLleno.jpg)
+![CrearPostOtro](public/assets/img/Para%20Proyecto/CrearPostOtro.jpg)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Sección de visualización de posts
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![Visualizacion1](public/assets/img/Para%20Proyecto/visualizacoin1.jpg)
+![Visualizacion2](public/assets/img/Para%20Proyecto/visualizacion2.jpg)
+![Visualizacion3](public/assets/img/Para%20Proyecto/visualizacion3.jpg)
+![Informacion](public/assets/img/Para%20Proyecto/VerInfoUsuario.jpg)
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Caracteristicas generales de la UI:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Diseño amigable y facil de entender
+- Diseño Responsive
 
-### Code Splitting
+## Librerias NPM utlizadaas:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- react-router-dom
+- validator
+- firebase
+- sweetAlert2
+- uuid
+- dotenv-webpack
+- node-sass
 
-### Analyzing the Bundle Size
+## Para probar la APP:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Si quieres probar el demo de la APP puedes probarla mediante el siguiente link:
 
-### Making a Progressive Web App
+https://itlamor.netlify.app/
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### De todas formas aqui estan los pasos a seguir si deseas ejecutarla localmente:
 
-### Advanced Configuration
+1. Clonar el proyecto y entrar al directorio para ejecutar el comando:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+    npm install
 
-### Deployment
+2. Debe obtener su token de firebase, en este proyecto los datos del sdk estan almacenados en variables de entorno, por lo que debe crear un proyecto en firebase y sustituir los datos del sdk con sus datos propios en el archivo config.firebase.js. Recuerde también habilitar el storage, la autenticación y la base de datos firestore
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+3. Una vez haya hecho todas las modificaciones necesarias ejecute:
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    npm start
