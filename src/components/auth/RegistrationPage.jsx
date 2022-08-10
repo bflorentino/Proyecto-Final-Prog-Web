@@ -21,8 +21,7 @@ const RegistrationPage = () => {
   const [ image, setImage ] = useState(null);
   const [ readedImage, setReadedImage ] = useState(null);
 
-  const [ formValues, handleInputChanges ] = useForm({
-    usuario: "", 
+  const [ formValues, handleInputChanges ] = useForm({ 
     nombre: "", 
     apellido: "", 
     password: "", 
@@ -95,23 +94,58 @@ const imageHandler = (e) =>{
 
       <form onSubmit={handleOnSubmit} className='authentication__container mt-2'>
 
-        <input 
-          type="text" 
-          name='usuario'
-          placeholder='Nombre de Usuario'
+      <input 
+          type="text"
+          name='nombre' 
+          placeholder='Nombre'
           className='authentication__input mt-3 p-1'
           autoComplete='off'
-          value={formValues.usuario}
+          value={formValues.nombre}
           onChange={handleInputChanges}
         />
         {
-          (message && responsibleInput === 0) && 
+          (message && responsibleInput === 4) && 
           (
             <p className='text-red w-full mt-1 ml-5'>
               {message}
             </p>
           )
         }
+        <input 
+          type="text" 
+          name='apellido'
+          placeholder='Apellido'
+          className='authentication__input mt-3 p-1'
+          autoComplete='off'
+          value = {formValues.apellido}
+          onChange={handleInputChanges}
+        />
+        {
+          (message && responsibleInput === 5) && 
+          (
+            <p className='text-red w-full mt-1 ml-5'>
+              {message}
+            </p>
+          )
+        }
+          <input 
+          type="text" 
+          name= 'email'
+          placeholder='Correo Electrónico' 
+          className='authentication__input mt-3 p-1'
+          autoComplete='off'
+          value={formValues.email}
+          onChange={handleInputChanges}
+        />
+        {
+          (message && responsibleInput === 3) && 
+          (
+            <p className='text-red w-full mt-1 ml-5'>
+              {message}
+            </p>
+          )
+        }
+
         <input 
           type="password" 
           name= 'password'
@@ -146,58 +180,7 @@ const imageHandler = (e) =>{
             </p>
           )
         }
-        <input 
-          type="text" 
-          name= 'email'
-          placeholder='Correo Electrónico' 
-          className='authentication__input mt-3 p-1'
-          autoComplete='off'
-          value={formValues.email}
-          onChange={handleInputChanges}
-        />
-        {
-          (message && responsibleInput === 3) && 
-          (
-            <p className='text-red w-full mt-1 ml-5'>
-              {message}
-            </p>
-          )
-        }
-        <input 
-          type="text"
-          name='nombre' 
-          placeholder='Nombre'
-          className='authentication__input mt-3 p-1'
-          autoComplete='off'
-          value={formValues.nombre}
-          onChange={handleInputChanges}
-        />
-        {
-          (message && responsibleInput === 4) && 
-          (
-            <p className='text-red w-full mt-1 ml-5'>
-              {message}
-            </p>
-          )
-        }
-        <input 
-          type="text" 
-          name='apellido'
-          placeholder='Apellido'
-          className='authentication__input mt-3 p-1'
-          autoComplete='off'
-          value = {formValues.apellido}
-          onChange={handleInputChanges}
-        />
-        {
-          (message && responsibleInput === 5) && 
-          (
-            <p className='text-red w-full mt-1 ml-5'>
-              {message}
-            </p>
-          )
-        }
-
+      
         <select 
           name="carrera" 
           className='authentication__input authentication__select mt-3 p-1' 

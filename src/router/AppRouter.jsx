@@ -16,7 +16,6 @@ const AppRouter = () => {
   useEffect(() => {
     onAuthStateChanged(auth, (userAuth) => {
       if(userAuth){
-        console.log("Hola mundo")
         dispatch(login({uid:userAuth.uid, usuario: userAuth.displayName, photoURL: userAuth.photoURL}))
         setIsAuntheticated(true)
         
