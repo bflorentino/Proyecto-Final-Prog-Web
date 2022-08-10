@@ -1,7 +1,5 @@
 import { createContext } from 'react';
 
-export const authContext = createContext() // Context to manage authenticacion
+export const authContext = createContext() // Context para el manejo de la autenticacion
 
-export const profileContext = createContext() // Context to control when profile window is open or not
-
-export const postContext = createContext() // Context to manage posts in the application
+export const profileContext = createContext() // Context para el manejo del modal del perfil del usuario

@@ -13,14 +13,13 @@ const Other = ({setFormValues, formValues,  setIsOtherOpen}) => {
     const [ fValues, handleInputChanges ] = useForm({nombre:"" , apellido: ""})
     const {responsibleInput, message} = error;
     
-    // CLOSE THE MODAL WINDOW
     const closeModal = () => {
     
         document.getElementById("portal").classList.toggle("modal__show-modal")
         setIsOtherOpen(false)
     }
 
-    // ADDING NAME TO BE DISPLAYED IN THE DROPDOWN
+    // Agregando el nuevo nombre que será desplegado dentro del dropdown
     const applyOther = (e) => {
         
         e.preventDefault()

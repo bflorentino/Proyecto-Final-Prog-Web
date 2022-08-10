@@ -3,6 +3,8 @@ import { getFirestore } from 'firebase/firestore'
 import { getAuth } from 'firebase/auth'
 import { getStorage } from 'firebase/storage'
 
+// SE UTILIZARON VARIABLES DE ENTORNO PARA ALMACENAR LOS DATOS DE LA CONFIGURACION DE FIREBASE
+
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_APIKEY,
     authDomain: process.env.REACT_APP_AUTHDOMAIN,

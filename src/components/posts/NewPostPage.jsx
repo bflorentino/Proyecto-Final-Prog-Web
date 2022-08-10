@@ -6,7 +6,7 @@ import { addImage, addNewPost, getAll } from '../../services/post-services';
 import { validatePostUpload } from '../../validations/validations';
 import Other from './Other';
 
-// A FORM TO MAKE A LOVE POST
+// COMPONENTE FORMULARIO PARA LA CREACIÓN DE UN POST DE DECLARACIÓN (SOLO PARA LOGEADOS)
 const NewPostPage = () => {
 
   const [ image, setImage ] = useState(null);
@@ -30,7 +30,7 @@ const NewPostPage = () => {
     body : ""
   })
   
-// GETTING USERS FROM FIREBASE TO BE DISPLAYED IN THE DROPDOWN
+// OBTENER LOS USUARIOS DE FIREBASE PARA DESPLEGARLOS EN EL DROPDOWN DE USUARIOS
   useEffect(() => {
     getAll("users")
       .then(data => {
@@ -38,7 +38,7 @@ const NewPostPage = () => {
     })
   }, [auth.email])
 
-// IMAGE HANDLER TO HANDLE AN IMAGE 
+// IMAGE HANDLER  
   const imageHandler = (e) =>{
     const reader = new FileReader();
     reader.onload = () => {
@@ -48,7 +48,7 @@ const NewPostPage = () => {
     setReadedImage(e.target.files[0])
   }
 
-// OPEN MODAL WINDOW WHEN USER PICK OTHER
+// ABRIR VENTANA MODAL CUANDO EL USUARIO SELECCIONE OTRO
 const handleOther = (e) => {
 
   document.getElementById("portal").classList.toggle("modal__show-modal")
@@ -57,7 +57,7 @@ const handleOther = (e) => {
   e.preventDefault();
 }
 
-// SUBMITTING THE FORM TO ADD A NEW LOVE POST
+// SUBMIT POST DE DECLARACION
   const postSubmit = (e) => {
     
     e.preventDefault()
@@ -113,14 +113,14 @@ const handleOther = (e) => {
 
           <div className='FormPost__fieldCont'>
             <div className='FormPost__fieldTitle'>
-              <img 
+            </div>
+            <div className='FormPost__fieldInp' style={{display: 'flex', 'flexDirection': 'row'}}>
+            <img 
                 src={auth.photoURL? auth.photoURL : '../../assets/img/no-user-image.jpg'} 
-                className='profile-img' 
+                className='profile-img'
                 alt='' 
               /> 
-            </div>
-            <div className='FormPost__fieldInp'>
-              <h1>{auth.nombre} {auth.apellido}</h1>
+              <h1 className='ml-3'>{auth.nombre} {auth.apellido}</h1>
             </div>
           </div>
 

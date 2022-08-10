@@ -30,7 +30,7 @@ const RegistrationPage = () => {
     email: ""
   })
 
-  // IMAGE HANDLER TO HANDLE AN IMAGE 
+  // IMAGE HANDLER
 const imageHandler = (e) =>{
   const reader = new FileReader();
   reader.onload = () => {
@@ -55,7 +55,7 @@ const imageHandler = (e) =>{
         // Registrar al usuario
         registerUser( formValues.nombre, formValues.email, formValues.password, url)
         .then(data => {
-          // autenticar al usuario una vez se registro su informacion
+          // Autenticar al usuario una vez se registro su informacion
           dispatch(login(data))
           // Añadir toda la información restante del usuario a la base de datos
           addLeftDataFromUser({...formValues, url})
